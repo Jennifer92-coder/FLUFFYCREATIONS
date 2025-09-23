@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Klaim Poin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="assets/logoperusahaan.png" alt="Logo" class="logo-small">
+    <nav>
+      <a href="dashboard.html" onclick="showSection('dashboard')">Dashboard</a>
+      <a href="#" onclick="showSection('input')">Input Kode</a>
+      <a href="#" onclick="showSection('rewards')">Rewards</a>
+      <a href="#" onclick="showSection('riwayat')">Riwayat</a>
+      <a href="#" onclick="showSection('settings')">Pengaturan</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="dashboard" class="active">
+      <h2>Halo, <span id="userName"></span>!</h2>
+      <p>Total Poin Kamu: <span id="userPoints">0</span></p>
+      <div class="promo">
+        <h3>Promotions</h3>
+        <img src="assets/logoperusahaan.png" alt="Promo Poster">
+      </div>
+    </section>
+
+    <section id="input" style="display:none;">
+      <h2>Input Kode Poin</h2>
+      <input type="text" id="codeInput" placeholder="Masukkan Kode">
+      <button onclick="redeemCode()">Klaim</button>
+      <p id="redeemMsg"></p>
+    </section>
+
+    <section id="rewards" style="display:none;">
+      <h2>Rewards</h2>
+      <div class="reward-item">
+        <img src="assets/tas_rajut.png" alt="Tas Rajutan" class="reward-img">
+        <div>
+          <h3>Tas Rajutan</h3>
+          <p>1000 poin</p>
+          <button onclick="tukarReward('Tas Rajutan', 1000)">Tukar</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="riwayat" style="display:none;">
+      <h2>Riwayat Penukaran</h2>
+      <ul id="riwayatList"></ul>
+    </section>
+
+    <section id="settings" style="display:none;">
+      <h2>Pengaturan</h2>
+      <button onclick="logout()">Logout</button>
+      <button onclick="editProfile()">Edit Akun</button>
+      <input type="file" accept="image/*" onchange="uploadPhoto(event)">
+      <p><img id="profilePhoto" src="assets/logoperusahaan.png" class="profile-photo"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+
+<script>
+  // Ambil nama dari localStorage
+  const nama = localStorage.getItem("nama");
+
+  // Masukkan ke span userName kalau ada
+  if (nama) {
+    document.getElementById("userName").textContent = nama;
+  } else {
+    document.getElementById("userName").textContent = "Tamu";
+  }
+</script>
+</body>
+</html>
