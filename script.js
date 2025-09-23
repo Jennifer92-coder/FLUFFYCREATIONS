@@ -64,19 +64,44 @@ function showSection(id) {
   document.getElementById(id).style.display = "block";
 }
 
+// Daftar kode & nilai poin
+const codes = {
+  "10-STS-A1": 10,
+  "10-STS-B2": 10,
+  "20-STS-C3": 20,
+  "20-STS-D4": 20
+};
+
+// Ambil poin & kode terpakai dari localStorage
+let usedCodes = JSON.parse(localStorage.getItem("usedCodes")) || [];
+
 function redeemCode() {
   const code = document.getElementById("codeInput").value.trim();
+
   if (codes[code]) {
-    currentUser.points += codes[code];
-    document.getElementById("redeemMsg").textContent = `Kode valid! +${codes[code]} poin.`;
-    document.getElementById("redeemMsg").style.color = "green";
-    document.getElementById("userPoints").textContent = currentUser.points;
-    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    if (usedCodes.includes(code)) {
+      document.getElementById("redeemMsg").textContent = "❌ Kode sudah pernah digunakan.";
+      document.getElementById("redeemMsg").style.color = "red";
+    } else {
+      currentUser.points += codes[code];
+      usedCodes.push(code);
+
+      // Simpan ke localStorage
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+      localStorage.setItem("usedCodes", JSON.stringify(usedCodes));
+
+      document.getElementById("userPoints").textContent = currentUser.points;
+      document.getElementById("redeemMsg").textContent = `✅ Berhasil! Kamu dapat ${codes[code]} poin.`;
+      document.getElementById("redeemMsg").style.color = "green";
+    }
   } else {
-    document.getElementById("redeemMsg").textContent = "Kode tidak valid.";
+    document.getElementById("redeemMsg").textContent = "❌ Kode tidak valid.";
     document.getElementById("redeemMsg").style.color = "red";
   }
+
+  document.getElementById("codeInput").value = "";
 }
+
 
 function tukarReward(nama, poin) {
   if (currentUser.points >= poin) {
