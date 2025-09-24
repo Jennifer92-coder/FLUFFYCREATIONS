@@ -1,0 +1,67 @@
+:root {
+  --pink: #f8c9d4;
+  --blue: #b9d7f8;
+  --mint: #c4f0d2;
+  --lavender: #d6c9f8;
+  --cream: #fef5d7;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, var(--pink), var(--blue), var(--mint), var(--lavender), var(--cream));
+  background-size: 400% 400%;
+  animation: gradientMove 20s ease infinite;
+}
+@keyframes gradientMove {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+header {
+  background: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+header nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+.auth-container, main {
+  max-width: 600px;
+  margin: 30px auto;
+  background: rgba(255,255,255,0.9);
+  padding: 20px;
+  border-radius: 15px;
+}
+input, button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 10px;
+  border: 1px solid var(--lavender);
+}
+button {
+  background: var(--blue);
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover { background: var(--mint); }
+.logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+.logo-small { height: 40px; margin-right: 10px; }
+.profile-photo { width: 100px; border-radius: 50%; }
+.reward-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.reward-img {
+  width: 100px;
+  margin-right: 15px;
+}

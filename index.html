@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Klaim Poin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <img src="assets/logoperusahaan.png" alt="Logo" class="logo">
+    <h1>STS Loyalty Program</h1>
+
+    <div id="loginForm">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="Email">
+      <input type="password" id="loginPassword" placeholder="Password">
+      <button onclick="login()">Login</button>
+      <p>Belum punya akun? <a href="#" onclick="showRegister()">Daftar</a></p>
+    </div>
+
+    <div id="registerForm" style="display:none;">
+      <h2>Daftar Akun</h2>
+      <input type="text" id="regName" placeholder="Nama Lengkap">
+      <input type="text" id="regAddress" placeholder="Alamat">
+      <input type="date" id="regDOB" placeholder="Tanggal Lahir">
+      <input type="email" id="regEmail" placeholder="Email">
+      <input type="tel" id="regPhone" placeholder="No. Telp">
+      <input type="password" id="regPassword" placeholder="Password">
+      <button onclick="register()">Daftar</button>
+      <p>Sudah punya akun? <a href="#" onclick="showLogin()">Login</a></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
